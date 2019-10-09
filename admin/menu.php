@@ -4,7 +4,7 @@
     <h2> Administrator management</h2>
   </div>
   <div class="bloc3">
-    <form class="product" action="infoProduct.php" method="post">
+    <form class="product" action="infoProd.php" method="post">
         <input type="submit" value="Product">
     </form>
     <form class="brand" action="infoBrand.php" method="post">

@@ -42,7 +42,7 @@ input[type=text] {
 .bloc{
   display : table-cell;
   margin:0 auto;
-  width: 30%;
+  width: 40%;
   display: flex;
 
 }

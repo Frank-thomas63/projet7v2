@@ -19,7 +19,7 @@ $cat = $pdoStat-> fetchAll();
   <body>
     <?php require_once 'menu.php' ?>
 
-      <h1> Brand </h1>
+      <h1> Category </h1>
     </div>
       <div class="blocMenu">
         <form action="insertCat.php" method="post">

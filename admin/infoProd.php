@@ -2,9 +2,10 @@
 // connection a la bdd
 require_once "connect.php";
 
-$pdoStat = $bdd->prepare('SELECT * FROM color');
+$pdoStat = $bdd->prepare('SELECT * FROM product');
 $executeItOk = $pdoStat-> execute();
-$color = $pdoStat-> fetchAll();
+$prod = $pdoStat-> fetchAll();
+
 //var_dump($brand);
 ?>
 
@@ -19,30 +20,25 @@ $color = $pdoStat-> fetchAll();
   <body>
     <?php require_once 'menu.php' ?>
 
-      <h1> Color </h1>
+      <h1> Product </h1>
     </div>
       <div class="blocMenu">
-        <form action="insertColor.php" method="post">
-          <p>Color addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Color">
-          </p>
+        <form action="insertProd.php" method="post">
+            <input type="submit" value=" Add Product">
         </form>
       </div>
         <div class="bloc">
         <ul>
-        <?php foreach ($color as $color): ?>
+        <?php foreach ($prod as $prod): ?>
             <table>
               <td>
-               <tr><?= $color['name'] ?></tr>
+               <tr><?= $prod['name'] ?></tr>
              </td>
              <td>
-             <tr><a class="supp" href="verifSuppColor.php?numcolor=<?= $color['id']?>"> Supprimer</a></tr>
+             <tr><a class="supp" href="verifSuppProd.php?numprod=<?= $prod['id']?>"> Supprimer</a></tr>
            </td>
            <td>
-             <tr><a class="modify" href="modifColor.php?numcolor=<?= $color['id']?>"> Modify</a></tr>
+             <tr><a class="modify" href="modifProd.php?numprod=<?= $prod['id']?>"> Modify</a></tr>
              </td>
           </table>
         <?php endforeach; ?>
