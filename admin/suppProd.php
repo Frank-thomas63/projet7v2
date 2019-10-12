@@ -2,18 +2,17 @@
 // connection a la bdd
 require_once "connect.php";
 // préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('DELETE FROM size WHERE id=:num LIMIT 1');
+$pdoStat = $bdd->prepare('DELETE FROM product WHERE id=:num LIMIT 1');
 // on cible la ou l'on cherche les donnés
-$pdoStat->bindValue(':num', $_GET['numsize'], PDO::PARAM_INT);
+$pdoStat->bindValue(':num', $_GET['numprod'], PDO::PARAM_INT);
 //execution
-
-
 $executeIsOk = $pdoStat->execute();
+
 
 // verification
 
 if($executeIsOk){
-  $message = 'the size was removed'; // > la marque a etait supprimer
+  $message = 'the product was removed'; // > la marque a etait supprimer
 }else{
   $message = 'failure to delete'; // > echec de la suppression de ..
 }

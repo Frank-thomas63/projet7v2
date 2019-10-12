@@ -1,11 +1,11 @@
 <?php
-var_dump($_POST);
 // connection a la bdd
 require_once "connect.php";
 
 // insertion dans la table Brand
 // préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('INSERT INTO product VALUES (:name, :category_id, :brand_id, :color_id, :image, :price, :gender)');
+$pdoStat = $bdd->prepare('INSERT INTO product
+VALUES (null, :name, :category_id, :brand_id, :color_id, :image, :price, :gender)');
 // on lie chaque marqueur à une valeur
 $pdoStat->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
 $pdoStat->bindValue(':category_id', $_POST['category_id'], PDO::PARAM_STR);

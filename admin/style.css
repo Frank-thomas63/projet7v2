@@ -4,6 +4,10 @@ body{
 h1{
   text-align: center;
 }
+.display{
+    text-decoration: none;
+    color : green;
+}
 .supp {
     text-decoration: none;
     color : red;
@@ -42,7 +46,7 @@ input[type=text] {
 .bloc{
   display : table-cell;
   margin:0 auto;
-  width: 40%;
+  width: 50%;
   display: flex;
 
 }

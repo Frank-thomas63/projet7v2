@@ -2,11 +2,10 @@
 // connection a la bdd
 require_once "connect.php";
 // préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('SELECT * FROM size WHERE id=:num');
-
-$pdoStat->bindValue(':num', $_GET['numsize'], PDO::PARAM_INT);
+$pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');
+$pdoStat->bindValue(':num', $_GET['numprod'], PDO::PARAM_INT);
 $executeItOk = $pdoStat->execute();
-$brand = $pdoStat->fetchAll();
+$prod = $pdoStat->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -19,9 +18,9 @@ $brand = $pdoStat->fetchAll();
   </head>
   <body>
     <div class="bloc2">
-    <?php foreach ($size as $size): ?>
-      <p> Are you sure you want to delete  <?= $size['name'] ?> ? </p>
-      <a class="supp" href="suppSize.php?numbrand=<?= $size['id']?>"> Supprimer</a>
+    <?php foreach ($prod as $prod): ?>
+      <p> Are you sure you want to delete  <?= $prod['name'] ?> ? </p>
+      <a class="supp" href="suppProd.php?numprod=<?= $prod['id']?>"> Supprimer</a>
     <?php endforeach; ?>
   </div>
   </body>

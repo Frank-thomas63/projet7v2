@@ -22,24 +22,26 @@ $prod = $pdoStat-> fetchAll();
 
       <h1> Product </h1>
     </div>
+    <div class="blocMenu">
+      <form action="insertProd.php" method="post">
+          <input type="submit" value=" Add Product">
+      </form>
+    </div>
       <div class="blocMenu">
-        <form action="insertProd.php" method="post">
-            <input type="submit" value=" Add Product">
-        </form>
+
       </div>
         <div class="bloc">
         <ul>
         <?php foreach ($prod as $prod): ?>
-            <table>
-              <td>
-               <tr><?= $prod['name'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppProd.php?numprod=<?= $prod['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifProd.php?numprod=<?= $prod['id']?>"> Modify</a></tr>
-             </td>
+          <table>
+            <td>
+              <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
+              <tr><?= $prod['name'] ?></tr>
+            </td>
+            <td>
+              <tr><a class="display" href="VisuProd.php?numprod=<?= $prod['id']?>"> display </a></tr>
+            </td>
+            <hr>
           </table>
         <?php endforeach; ?>
       </ul>

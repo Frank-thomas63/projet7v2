@@ -2,7 +2,7 @@
 // connection a la bdd
 require_once "connect.php";
 
-$pdoStat = $bdd->prepare('SELECT * FROM size');
+$pdoStat = $bdd->prepare('SELECT * FROM stock');
 $executeItOk = $pdoStat-> execute();
 $size = $pdoStat-> fetchAll();
 //var_dump($brand);
@@ -19,11 +19,11 @@ $size = $pdoStat-> fetchAll();
   <body>
     <?php require_once 'menu.php' ?>
 
-      <h1> Brand </h1>
+      <h1> Stock </h1>
     </div>
       <div class="blocMenu">
         <form action="insertSize.php" method="post">
-          <p>Brand addition
+          <p> Stock addition
             <input id="name" type="text" name="name">
           </p>
           <p>
@@ -36,7 +36,7 @@ $size = $pdoStat-> fetchAll();
         <?php foreach ($size as $size): ?>
             <table>
               <td>
-               <tr><?= $size['name'] ?></tr>
+               <tr><?= $size['stock'] ?></tr>
              </td>
              <td>
              <tr><a class="supp" href="verifSuppSize.php?numbrand=<?= $size['id']?>"> Supprimer</a></tr>

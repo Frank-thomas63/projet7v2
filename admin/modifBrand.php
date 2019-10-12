@@ -3,11 +3,8 @@
 require_once "connect.php";
 // préparation de la requête d'insertion
 $pdoStat = $bdd->prepare('SELECT * FROM brand WHERE id=:num');
-
 $pdoStat->bindValue(':num', $_GET['numbrand'], PDO::PARAM_STR);
-
 $executeIsOk = $pdoStat->execute();
-
 $brand = $pdoStat->fetch();
 ?>
 
