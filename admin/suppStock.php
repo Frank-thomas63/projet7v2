@@ -1,19 +1,26 @@
 <?php
+
 // connection a la bdd
 require_once "connect.php";
-// préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('DELETE FROM size WHERE id=:num LIMIT 1');
-// on cible la ou l'on cherche les donnés
-$pdoStat->bindValue(':num', $_GET['numsize'], PDO::PARAM_INT);
-//execution
-
-
+// recuperation de iD product
+$pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');
+$pdoStat->bindValue(':num', $_GET['numstock'], PDO::PARAM_STR);
 $executeIsOk = $pdoStat->execute();
+$product = $pdoStat-> fetch();
 
-// verification
+// recuperation de size
+$pdoStatSize = $bdd->prepare('SELECT size.* FROM size INNER JOIN stock on size.id = stock.size_id WHERE product_id ='.$product['id']);
+$executeItOk = $pdoStatSize-> execute();
+$size = $pdoStatSize-> fetch();
+
+// préparation de la requête d'insertion
+$pdoStatStock = $bdd->prepare('DELETE stock FROM stock where size_id = '.$size['id']. ' and product_id ='.$product['id']);
+$executeItOk = $pdoStatStock->execute();
+$stock = $pdoStatStock-> fetch();
+
 
 if($executeIsOk){
-  $message = 'the size was removed'; // > la marque a etait supprimer
+  $message = 'the stock was removed'; // > la marque a etait supprimer
 }else{
   $message = 'failure to delete'; // > echec de la suppression de ..
 }

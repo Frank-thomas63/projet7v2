@@ -1,5 +1,7 @@
 body{
   font-family: 'Raleway', sans-serif;
+
+  height: 1000px;
 }
 h1{
   text-align: center;
@@ -15,6 +17,10 @@ h1{
 .modify {
     text-decoration: none;
     color : blue;
+}
+.stock{
+  text-decoration: none;
+  color: purple;
 }
 input[type=submit] {
   font-size: 17px;
@@ -47,7 +53,7 @@ input[type=text] {
   display : table-cell;
   margin:0 auto;
   width: 50%;
-  display: flex;
+
 
 }
 .bloc2{

@@ -1,20 +1,30 @@
 <?php
+var_dump($_POST);
 // connection a la bdd
 require_once "connect.php";
-// préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('UPDATE size SET name=:name WHERE id=:num LIMIT 1');
+// recuperation de iD product
+$pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');
+$pdoStat->bindValue(':num', $_GET['numstock'], PDO::PARAM_STR);
+$executeIsOk = $pdoStat->execute ();
+$product = $pdoStat-> fetch();
 
-$pdoStat->bindValue(':num', $_POST['numsize'], PDO::PARAM_INT);
-$pdoStat->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-$executeItOk = $pdoStat->execute();
-// verification
+// recuperation de size
+$pdoStatSize = $bdd->prepare('SELECT size.* FROM size INNER JOIN stock on size.id = stock.size_id WHERE product_id ='.$product['id']);
+$executeItOk = $pdoStatSize-> execute();
+$size = $pdoStatSize-> fetch();
+
+// integration du stock par rapport a size
+$pdoStatStock = $bdd->prepare('UPDATE stock SET stock=:num where size_id = '.$size['id']. ' and product_id ='.$product['id']);
+$pdoStatStock->bindValue(':num', $_POST['num'], PDO::PARAM_INT);
+$executeItOk = $pdoStatStock-> execute();
+
+
 if($executeItOk){
-  $message = 'the size has been modified'; // > la marque a été modifié
+  $message = 'the stock has been modified'; // > la marque a été modifié
 }else{
   $message = 'failure to change'; // > echec de la modification de ..
 }
 
-$size = $pdoStat->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

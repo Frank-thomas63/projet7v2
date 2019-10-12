@@ -2,12 +2,12 @@
 // connection a la bdd
 require_once "connect.php";
 
-$pdoStat = $bdd->prepare('SELECT * FROM stock');
+$pdoStat = $bdd->prepare('SELECT * FROM product');
 $executeItOk = $pdoStat-> execute();
-$size = $pdoStat-> fetchAll();
+$prod = $pdoStat-> fetchAll();
+
 //var_dump($brand);
 ?>
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -18,37 +18,27 @@ $size = $pdoStat-> fetchAll();
   </head>
   <body>
     <?php require_once 'menu.php' ?>
-
-      <h1> Stock </h1>
+    <h1> Stock </h1>
     </div>
-      <div class="blocMenu">
-        <form action="insertSize.php" method="post">
-          <p> Stock addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Size">
-          </p>
-        </form>
-      </div>
+    <div class="blocMenu">
+      <form action="insertStock.php" method="post">
+          <input type="submit" value=" Add Stock">
+      </form>
+    </div>
         <div class="bloc">
         <ul>
-        <?php foreach ($size as $size): ?>
+          <?php foreach ($prod as $prod): ?>
             <table>
               <td>
-               <tr><?= $size['stock'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppSize.php?numbrand=<?= $size['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifSize.php?numbrand=<?= $size['id']?>"> Modify</a></tr>
-             </td>
-          </table>
-        <?php endforeach; ?>
-      </ul>
-
+                <input type="hidden" name="numstock" value="<?=$prod['id'];?>">
+                <tr><?= $prod['name'] ?></tr>
+              </td>
+              <td>
+                <tr><a class="stock" href="VisuStock.php?numstock=<?= $prod['id']?>"> Stock </a></tr>
+              </td>
+              <hr>
+            </table>
+          <?php endforeach; ?>
       </div>
-
   </body>
 </html>

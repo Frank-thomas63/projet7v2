@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST);
 // connection a la bdd
 require_once "connect.php";
 // préparation de la requête de modification

@@ -1,12 +1,24 @@
 <?php
 // connection a la bdd
 require_once "connect.php";
-// préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('SELECT * FROM size WHERE id=:num');
+// recuperation de iD product
+$pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');
+$pdoStat->bindValue(':num', $_GET['numstock'], PDO::PARAM_STR);
+$executeIsOk = $pdoStat->execute();
+$product = $pdoStat-> fetch();
 
-$pdoStat->bindValue(':num', $_GET['numsize'], PDO::PARAM_INT);
-$executeItOk = $pdoStat->execute();
-$brand = $pdoStat->fetchAll();
+// recuperation de size
+$pdoStatSize = $bdd->prepare('SELECT size.* FROM size INNER JOIN stock on size.id = stock.size_id WHERE product_id ='.$product['id']);
+$executeItOk = $pdoStatSize-> execute();
+$size = $pdoStatSize-> fetch();
+
+// préparation de la requête d'insertion
+$pdoStatStock = $bdd->prepare('SELECT stock.* FROM stock where size_id = '.$size['id']. ' and product_id ='.$product['id']);
+$pdoStatStock->bindValue(':num', $_GET['numstock'], PDO::PARAM_INT);
+$executeItOk = $pdoStatStock->execute();
+$stock = $pdoStatStock-> fetch();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -19,10 +31,12 @@ $brand = $pdoStat->fetchAll();
   </head>
   <body>
     <div class="bloc2">
-    <?php foreach ($size as $size): ?>
-      <p> Are you sure you want to delete  <?= $size['name'] ?> ? </p>
-      <a class="supp" href="suppSize.php?numbrand=<?= $size['id']?>"> Supprimer</a>
-    <?php endforeach; ?>
+      <p> Are you sure you want to delete stock of
+        <?= $product['name'] ?>
+      size :  <?= $size['name'] ?>
+      stock :  <?= $stock['stock'] ?> ? </p>
+      <a class="supp" href="suppStock.php?numstock=<?= $product['id']?>"> Supprimer</a>
+
   </div>
   </body>
 </html>

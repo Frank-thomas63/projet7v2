@@ -1,16 +1,21 @@
 <?php
+var_dump($_POST);
 // connection a la bdd
 require_once "connect.php";
-
-// insertion dans la table Brand
 // préparation de la requête d'insertion
-$pdoStat = $bdd->prepare('INSERT INTO size VALUES (NULL, :name)');
-// on lie chaque marqueur à une valeur
-$pdoStat->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-// execution de la requête préparé
+$pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');
+$pdoStat->bindValue(':num', $_GET['numprod'], PDO::PARAM_STR);
+$executeItOk = $pdoStat-> execute();
+$product = $pdoStat-> fetch();
+VAR_DUMP($product['id']);
+//select size
+$pdoStatsize = $bdd->prepare('SELECT * FROM size');
+$executeItOk = $pdoStatsize-> execute();
+
+$pdoStat = $bdd->prepare('INSER INTO stock VALUES (product_id ='.$product['id'].', size_id = '.$_POST['size'].', stock='.$_POST['stock'].'');
 $issertIsOk = $pdoStat->execute();
 if($issertIsOk){
-  $message = 'the size '.$_POST['name'].' has been registered'; // > la marque a été enregistrée
+  $message = $_POST['stock'].' the stock '.$product['name'].' has been registered'; // > la marque a été enregistrée
 }else{
   $message = 'You have to register a mark'; // > vous devez inscrire un marque
 }

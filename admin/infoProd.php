@@ -40,6 +40,7 @@ $prod = $pdoStat-> fetchAll();
             </td>
             <td>
               <tr><a class="display" href="VisuProd.php?numprod=<?= $prod['id']?>"> display </a></tr>
+
             </td>
             <hr>
           </table>
