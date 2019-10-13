@@ -17,16 +17,14 @@ $brand = $pdoStat->fetch();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <form action="modifyBrand.php" method="post">
-      <p>
-        <input type="hidden" name="numbrand" value="<?=$brand['id'];?>">
-        <label for="name"> Name brand </label>
-        <input id="name" type="text" name="name" value="<?= $brand['name'];?>">
-      </p>
-      <p>
-        <input type="submit" value=" Modify Brand">
-      </p>
-    </form>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <form action="modifyBrand.php" method="post">
+        <p><input type="hidden" name="numbrand" value="<?=$brand['id'];?>"></p>
+        <p><label for="name"> Name brand </label></p>
+        <p><input id="name" type="text" name="name" value="<?= $brand['name'];?>"></p>
+        <p><input type="submit" value=" Modify Brand"></p>
+      </form>
+    </div>
   </body>
 </html>

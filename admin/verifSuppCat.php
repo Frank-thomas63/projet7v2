@@ -18,11 +18,13 @@ $cat = $pdoStat->fetchAll();
     <title></title>
   </head>
   <body>
-    <div class="bloc2">
-    <?php foreach ($cat as $cat ): ?>
-      <p> Are you sure you want to delete  <?= $cat['name'] ?> ? </p>
-      <a class="supp" href="suppCat.php?numcat=<?= $cat['id']?>"> Supprimer</a>
-    <?php endforeach; ?>
-  </div>
+    <div class="ensemble">
+      <div class="bloc2">
+        <?php foreach ($cat as $cat ): ?>
+          <p> Are you sure you want to delete  <?= $cat['name'] ?> ? </p>
+          <a class="supp" href="suppCat.php?numcat=<?= $cat['id']?>"> Supprimer</a>
+        <?php endforeach; ?>
+      </div>
+    </div>
   </body>
 </html>

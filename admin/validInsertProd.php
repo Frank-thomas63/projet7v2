@@ -31,11 +31,11 @@ if($issertIsOk){
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <div class="bloc2">
-
-
-    <p><?php echo $message ?></p>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <div class="bloc2">
+        <p><?php echo $message ?></p>
+      </div>
+    </div>
   </body>
 </html>

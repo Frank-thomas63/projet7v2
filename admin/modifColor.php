@@ -20,16 +20,14 @@ $color = $pdoStat->fetch();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <form action="modifyColor.php" method="post">
-      <p>
-        <input type="hidden" name="numcolor" value="<?=$color['id'];?>">
-        <label for="name"> Color </label>
-        <input id="name" type="text" name="name" value="<?= $color['name'];?>">
-      </p>
-      <p>
-        <input type="submit" value=" Modify Color">
-      </p>
-    </form>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <form action="modifyColor.php" method="post">
+        <p><input type="hidden" name="numcolor" value="<?=$color['id'];?>"></p>
+        <p><label for="name"> Name color </label></p>
+        <p><input id="name" type="text" name="name" value="<?= $color['name'];?>"></p>
+        <p><input type="submit" value=" Modify Color"></p>
+      </form>
+    </div>
   </body>
 </html>

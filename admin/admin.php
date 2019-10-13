@@ -7,6 +7,8 @@
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+    </div>
   </body>
 </html>

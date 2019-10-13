@@ -18,11 +18,13 @@ $brand = $pdoStat->fetchAll();
     <title></title>
   </head>
   <body>
-    <div class="bloc2">
-    <?php foreach ($brand as $brand): ?>
-      <p> Are you sure you want to delete  <?= $brand['name'] ?> ? </p>
-      <a class="supp" href="suppBrand.php?numbrand=<?= $brand['id']?>"> Supprimer</a>
-    <?php endforeach; ?>
-  </div>
+    <div class="ensemble">
+      <div class="bloc2">
+        <?php foreach ($brand as $brand): ?>
+          <p> Are you sure you want to delete  <?= $brand['name'] ?> ? </p>
+          <a class="supp" href="suppBrand.php?numbrand=<?= $brand['id']?>"> Supprimer</a>
+        <?php endforeach; ?>
+      </div>
+    </div>
   </body>
 </html>

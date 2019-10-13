@@ -22,18 +22,20 @@ if($executeItOk){
 
 ?>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-      <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
-      <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <title>Brand delect</title>
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
-  <div class="bloc2">
-    <p><?php echo $message ?></p>
-  </div>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <div class="bloc2">
+        <p><?php echo $message ?></p>
+      </div>
+    </div>
   </body>
 </html>

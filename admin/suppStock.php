@@ -29,14 +29,14 @@ if($executeIsOk){
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-      <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
-      <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <title>Brand delect</title>
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <title></title>
   </head>
   <body>
     <div class="ensemble">
       <?php require_once 'menu.php' ?>
-      <div class="blocMenu">
+      <div class="bloc2">
         <p><?php echo $message ?></p>
       </div>
     </div>

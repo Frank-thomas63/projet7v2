@@ -17,38 +17,21 @@ $size = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
       <h1> Size </h1>
-    </div>
-      <div class="blocMenu">
-        <form action="insertSize.php" method="post">
-          <p>Brand addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Size">
-          </p>
-        </form>
-      </div>
-        <div class="bloc">
-        <ul>
+      <form action="insertSize.php" method="post">
+        <p>Size addition </p>
+        <p><input id="name" type="text" name="name"></p>
+        <p><input type="submit" value=" Add Size"></p>
+      </form>
+      <div class="bloc">
         <?php foreach ($size as $size): ?>
-            <table>
-              <td>
-               <tr><?= $size['name'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppSize.php?numsize=<?= $size['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifSize.php?numsize=<?= $size['id']?>"> Modify</a></tr>
-             </td>
-          </table>
+          <hr><?= $size['name'] ?>
+          <p><a class="supp" href="verifSuppSize.php?numsize=<?= $size['id']?>"> Supprimer</a>
+          <a class="modify" href="modifSize.php?numsize=<?= $size['id']?>"> Modify</a></p>
         <?php endforeach; ?>
-      </ul>
-
       </div>
-
+    </div>
   </body>
 </html>

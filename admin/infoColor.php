@@ -17,38 +17,23 @@ $color = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
       <h1> Color </h1>
-    </div>
       <div class="blocMenu">
         <form action="insertColor.php" method="post">
-          <p>Color addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Color">
-          </p>
+          <p>Color addition</p>
+          <p><input id="name" type="text" name="name"></p>
+          <p><input type="submit" value=" Add Color"></p>
         </form>
       </div>
-        <div class="bloc">
-        <ul>
+      <div class="bloc">
         <?php foreach ($color as $color): ?>
-            <table>
-              <td>
-               <tr><?= $color['name'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppColor.php?numcolor=<?= $color['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifColor.php?numcolor=<?= $color['id']?>"> Modify</a></tr>
-             </td>
-          </table>
+          <hr><p><?= $color['name'] ?></p>
+          <p><a class="supp" href="verifSuppColor.php?numcolor=<?= $color['id']?>"> Supprimer</a>
+          <a class="modify" href="modifColor.php?numcolor=<?= $color['id']?>"> Modify</a></p>
         <?php endforeach; ?>
-      </ul>
-
       </div>
-
+    </div>
   </body>
 </html>

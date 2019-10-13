@@ -17,28 +17,19 @@ $prod = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <h1> Stock </h1>
-    </div>
-    <div class="blocMenu">
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <h1> Stock </h1>
       <form action="insertStock.php" method="post">
           <input type="submit" value=" Add Stock">
       </form>
-    </div>
-        <div class="bloc">
-        <ul>
-          <?php foreach ($prod as $prod): ?>
-            <table>
-              <td>
-                <input type="hidden" name="numstock" value="<?=$prod['id'];?>">
-                <tr><?= $prod['name'] ?></tr>
-              </td>
-              <td>
-                <tr><a class="stock" href="VisuStock.php?numstock=<?= $prod['id']?>"> Stock </a></tr>
-              </td>
-              <hr>
-            </table>
-          <?php endforeach; ?>
+      <div class="bloc">
+        <?php foreach ($prod as $prod): ?>
+          <input type="hidden" name="numstock" value="<?=$prod['id'];?>">
+          <p><?= $prod['name'] ?></p>
+          <p><a class="stock" href="VisuStock.php?numstock=<?= $prod['id']?>"> Stock </a></p>
+        <?php endforeach; ?>
       </div>
+    </div>
   </body>
 </html>

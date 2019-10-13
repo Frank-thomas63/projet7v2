@@ -20,16 +20,14 @@ $size = $pdoStat->fetch();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <form action="modifySize.php" method="post">
-      <p>
-        <input type="hidden" name="numsize" value="<?=$size['id'];?>">
-        <label for="name"> Name brand </label>
-        <input id="name" type="text" name="name" value="<?= $size['name'];?>">
-      </p>
-      <p>
-        <input type="submit" value=" Modify size">
-      </p>
-    </form>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <form action="modifySize.php" method="post">
+        <p><input type="hidden" name="numsize" value="<?=$size['id'];?>"></p>
+        <p><label for="name"> Name Size</label></p>
+        <p><input id="name" type="text" name="name" value="<?= $size['name'];?>"></p>
+        <p><input type="submit" value=" Modify size"></p>
+      </form>
+    </div>
   </body>
 </html>

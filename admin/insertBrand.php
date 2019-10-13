@@ -10,7 +10,7 @@ $pdoStat->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
 // execution de la requête préparé
 $issertIsOk = $pdoStat->execute();
 if($issertIsOk){
-  $message = 'the mark '.$_POST['name'].' has been registered'; // > la marque a été enregistrée
+  $message = 'The mark '.$_POST['name'].' has been registered'; // > la marque a été enregistrée
 }else{
   $message = 'You have to register a mark'; // > vous devez inscrire un marque
 }
@@ -24,11 +24,11 @@ if($issertIsOk){
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <div class="bloc2">
-
-
-    <p><?php echo $message ?></p>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <div class="bloc2">
+        <p><?php echo $message ?></p>
+      </div>
+    </div>
   </body>
 </html>

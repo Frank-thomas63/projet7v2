@@ -17,38 +17,23 @@ $brand = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
       <h1> Brand </h1>
-    </div>
       <div class="blocMenu">
         <form action="insertBrand.php" method="post">
-          <p>Brand addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Brand">
-          </p>
+          <p>Brand addition</P>
+          <P><input id="name" type="text" name="name"></p>
+          <p><input type="submit" value=" Add Brand"></p>
         </form>
       </div>
-        <div class="bloc">
-        <ul>
+      <div class="bloc">
         <?php foreach ($brand as $brand): ?>
-            <table>
-              <td>
-               <tr><?= $brand['name'] ?><?= $brand['logo'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppBrand.php?numbrand=<?= $brand['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifBrand.php?numbrand=<?= $brand['id']?>"> Modify</a></tr>
-             </td>
-          </table>
+          <P><?= $brand['name'] ?><?= $brand['logo'] ?></P>
+          <P><a class="supp" href="verifSuppBrand.php?numbrand=<?= $brand['id']?>"> Supprimer</a>
+          <a class="modify" href="modifBrand.php?numbrand=<?= $brand['id']?>"> Modify</a></P>
         <?php endforeach; ?>
-      </ul>
-
       </div>
-
+    </div>
   </body>
 </html>

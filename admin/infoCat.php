@@ -17,38 +17,23 @@ $cat = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
       <h1> Category </h1>
-    </div>
       <div class="blocMenu">
         <form action="insertCat.php" method="post">
-          <p>Brand addition
-            <input id="name" type="text" name="name">
-          </p>
-          <p>
-            <input type="submit" value=" Add Category">
-          </p>
+          <p> Category addition </p>
+          <p><input id="name" type="text" name="name"></p>
+          <p><input type="submit" value=" Add Category"></p>
         </form>
       </div>
-        <div class="bloc">
-        <ul>
+      <div class="bloc">
         <?php foreach ($cat as $cat): ?>
-            <table>
-              <td>
-               <tr><?= $cat['name'] ?></tr>
-             </td>
-             <td>
-             <tr><a class="supp" href="verifSuppCat.php?numcat=<?= $cat['id']?>"> Supprimer</a></tr>
-           </td>
-           <td>
-             <tr><a class="modify" href="modifCat.php?numcat=<?= $cat['id']?>"> Modify</a></tr>
-             </td>
-          </table>
+          <hr><p><?= $cat['name'] ?></p>
+          <p><a class="supp" href="verifSuppCat.php?numcat=<?= $cat['id']?>"> Supprimer</a>
+          <a class="modify" href="modifCat.php?numcat=<?= $cat['id']?>"> Modify</a></p>
         <?php endforeach; ?>
-      </ul>
-
       </div>
-
+    </div>
   </body>
 </html>
