@@ -30,13 +30,14 @@ $stock = $pdoStatStock-> fetch();
     <title></title>
   </head>
   <body>
-    <div class="bloc2">
-      <p> Are you sure you want to delete stock of
-        <?= $product['name'] ?>
-      size :  <?= $size['name'] ?>
-      stock :  <?= $stock['stock'] ?> ? </p>
-      <a class="supp" href="suppStock.php?numstock=<?= $product['id']?>"> Supprimer</a>
-
-  </div>
+    <div class="ensemble">
+      <div class="blocMenu">
+        <p> Are you sure you want to delete stock of
+          <?= $product['name'] ?></p><hr>
+        <p>  Size :  <?= $size['name'] ?></p>
+        <p>  Stock :  <?= $stock['stock'] ?> ? </p>
+        <a class="supp" href="suppStock.php?numstock=<?= $product['id']?>"> Supprimer</a>
+      </div>
+    </div>
   </body>
 </html>

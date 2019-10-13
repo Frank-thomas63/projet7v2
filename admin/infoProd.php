@@ -1,12 +1,9 @@
 <?php
 // connection a la bdd
 require_once "connect.php";
-
 $pdoStat = $bdd->prepare('SELECT * FROM product');
 $executeItOk = $pdoStat-> execute();
 $prod = $pdoStat-> fetchAll();
-
-//var_dump($brand);
 ?>
 
 <!DOCTYPE html>
@@ -18,36 +15,21 @@ $prod = $pdoStat-> fetchAll();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
-      <h1> Product </h1>
-    </div>
-    <div class="blocMenu">
-      <form action="insertProd.php" method="post">
-          <input type="submit" value=" Add Product">
-      </form>
-    </div>
-      <div class="blocMenu">
-
-      </div>
+    <div class="ensemble">
+        <?php require_once 'menu.php' ?>
+        <h1> Product </h1>
+        <form action="insertProd.php" method="post">
+            <input type="submit" value=" Add Product">
+        </form>
         <div class="bloc">
-        <ul>
-        <?php foreach ($prod as $prod): ?>
-          <table>
-            <td>
-              <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
-              <tr><?= $prod['name'] ?></tr>
-            </td>
-            <td>
-              <tr><a class="display" href="VisuProd.php?numprod=<?= $prod['id']?>"> display </a></tr>
-
-            </td>
-            <hr>
-          </table>
-        <?php endforeach; ?>
-      </ul>
-
+          <?php foreach ($prod as $prod): ?>
+            <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
+                <p><?= $prod['name'] ?></p>
+                <p><a class="display" href="VisuProd.php?numprod=<?= $prod['id']?>"> display </a></p>
+              <hr>
+            </table>
+          <?php endforeach; ?>
       </div>
-
+    </div>
   </body>
 </html>

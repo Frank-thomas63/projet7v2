@@ -20,9 +20,9 @@ $stock = $pdoStatStock-> fetch();
 
 
 if($executeIsOk){
-  $message = 'the stock was removed'; // > la marque a etait supprimer
+  $message = 'The stock '.$product['name'].' Size : '.$size['name'].' was removed'; // > la marque a etait supprimer
 }else{
-  $message = 'failure to delete'; // > echec de la suppression de ..
+  $message = 'Failure to delete'; // > echec de la suppression de ..
 }
 ?>
 <!DOCTYPE html>
@@ -34,10 +34,11 @@ if($executeIsOk){
     <title>Brand delect</title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
-  <div class="bloc2">
-    <p><?php echo $message ?></p>
-  </div>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <div class="blocMenu">
+        <p><?php echo $message ?></p>
+      </div>
+    </div>
   </body>
 </html>

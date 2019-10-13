@@ -32,37 +32,35 @@ $pdoStatGender-> execute();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
       <h1> Product </h1>
-    </div>
-      <div class="blocMenu">
         <form action="validInsertProd.php" method="post">
-          <p>Product
-            <input id="name" type="text" name="name">
-          </p>
-          <p>Category
-            <select  name="category_id" >
-              <?php while($prodCategory = $pdoStatCategory->fetch()){ ?>
-                <option value="<?php echo $prodCategory['id']; ?>"><?php echo $prodCategory['name']; ?></option>
-              <?php } ?>
-            </select>
-          </p>
-          <p>Brand
-            <select  name="brand_id" >
-              <?php while($prodBrand = $pdoStatBrand->fetch()){ ?>
-                <option value="<?php echo $prodBrand['id']; ?>"><?php echo $prodBrand['name']; ?></option>
-              <?php } ?>
-            </select>
-          </p>
-          <p>Color
-            <select name="color_id" >
-              <?php while($prodColor = $pdoStatColor->fetch()){ ?>
-                <option value="<?php echo $prodColor['id']; ?>"><?php echo $prodColor['name']; ?></option>
-              <?php } ?>
-            </select>
-          </p>
-          <p>Image
+        <input id="name" type="text" name="name">
+    </div>
+    <div class="blocSelection">
+        <p>Category :
+          <select  name="category_id" >
+            <?php while($prodCategory = $pdoStatCategory->fetch()){ ?>
+              <option value="<?php echo $prodCategory['id']; ?>"><?php echo $prodCategory['name']; ?></option>
+            <?php } ?>
+          </select>
+        </p>
+        <p>Brand :
+          <select  name="brand_id" >
+            <?php while($prodBrand = $pdoStatBrand->fetch()){ ?>
+              <option value="<?php echo $prodBrand['id']; ?>"><?php echo $prodBrand['name']; ?></option>
+            <?php } ?>
+          </select>
+        </p>
+        <p>Color
+          <select name="color_id" >
+            <?php while($prodColor = $pdoStatColor->fetch()){ ?>
+              <option value="<?php echo $prodColor['id']; ?>"><?php echo $prodColor['name']; ?></option>
+            <?php } ?>
+          </select>
+        </p>
+        <p>Image
             <select  name="image" >
               <?php while($prodImage = $pdoStatImage->fetch()){ ?>
                 <option value="<?php echo $prodImage['image']; ?>"><?php echo $prodImage['image']; ?></option>
@@ -83,11 +81,10 @@ $pdoStatGender-> execute();
               <?php } ?>
             </select>
           </p>
-
-          <p>
-            <input type="submit" value=" Add Product" name="validInsertProd">
-          </p>
-        </form>
       </div>
+      <div class="ensemble">
+        <p><input type="submit" value=" Add Product" name="validInsertProd"></p>
+      </form>
+    </div>
   </body>
 </html>

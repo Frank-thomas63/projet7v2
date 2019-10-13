@@ -18,7 +18,6 @@ $executeItOk = $pdoStatStock-> execute();
 $stock = $pdoStatStock-> fetch();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -28,17 +27,19 @@ $stock = $pdoStatStock-> fetch();
     <title></title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
-    <form action="modifyStock.php?numstock=<?= $product['id']?>" method="post">
-      <p>
-        <input type="hidden" name="num" value="<?=$stock['id'];?>">
-          Product : <?= $product['name'] ?><br><hr>
-        <label for="name"> Size : <?= $size['name'] ?><br> </label>
-        <input id="name" type="text" name="num" value="<?= $stock['stock'];?>">
-      </p>
-      <p>
-        <input type="submit" value=" Modify stock">
-      </p>
-    </form>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
+      <form action="modifyStock.php?numstock=<?= $product['id']?>" method="post">
+        <p>
+          <input type="hidden" name="num" value="<?=$stock['id'];?>">
+            Product : <?= $product['name'] ?><br><hr>
+          <label for="name"> Size : <?= $size['name'] ?><br> </label>
+          <input id="name" type="text" name="num" value="<?= $stock['stock'];?>">
+        </p>
+        <p>
+          <input type="submit" value=" Modify stock">
+        </p>
+      </form>
+    </div>
   </body>
 </html>

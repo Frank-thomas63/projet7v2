@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+
 // connection a la bdd
 require_once "connect.php";
 // recuperation de iD product
@@ -20,9 +20,9 @@ $executeItOk = $pdoStatStock-> execute();
 
 
 if($executeItOk){
-  $message = 'the stock has been modified'; // > la marque a été modifié
+  $message = 'The stock '.$product['name'].' has been modified of '.$_POST['num'].' copy.'; // > la marque a été modifié
 }else{
-  $message = 'failure to change'; // > echec de la modification de ..
+  $message = 'Failure to change'; // > echec de la modification de ..
 }
 
 ?>
@@ -35,10 +35,12 @@ if($executeItOk){
     <title>Brand delect</title>
   </head>
   <body>
-    <?php require_once 'menu.php' ?>
+    <div class="ensemble">
+      <?php require_once 'menu.php' ?>
 
-  <div class="bloc2">
-    <p><?php echo $message ?></p>
-  </div>
+      <div class="bloc2">
+        <p><?php echo $message ?></p>
+      </div>
+    </div>
   </body>
 </html>
