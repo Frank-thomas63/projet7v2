@@ -2,10 +2,15 @@
 
 // connection a la bdd
 require_once "admin/connect.php";
-$pdoStat = $bdd->prepare('SELECT  p.`name`, c.`name`, p.`price` FROM `product` p INNER JOIN `category` c ON  p.`category_id` = c.`id`');
+$pdoStat = $bdd->prepare('SELECT p.`id`, p.`name`, b.`name`, c.`name`, p.`price`
+                          FROM `product` p
+                          INNER JOIN `brand` b
+                          ON p.`brand_id` = b.`id`
+                          INNER JOIN `category` c
+                          ON  p.`category_id` = c.`id`
+                          ');
 $executeItOk = $pdoStat-> execute();
 $product = $pdoStat-> fetchAll();
-
 
 
 ?>
@@ -20,12 +25,18 @@ $product = $pdoStat-> fetchAll();
   <body>
     <div class="ensemble">
       <?php require_once 'menu2.php' ?>
-      <div class="bloc">
-        <?php  foreach( $product as $prod )
-        		{
-        			echo 'Product : '.$prod[0].'<br />  category : '.$prod[1].'<br /> price : '.$prod[2].'<hr>' ;
-        		};?>
-      </div>
+      <h1> All products </h1>
+
+        <?php  foreach( $product as $prod ){?>
+              <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
+              <a class="display" href="product.php?numprod=<?= $prod['id']?>" class="bloc">
+              <div class="BlocProd">
+              <?php
+        			echo 'Product : '.$prod[1].'<br /> Brand : '.$prod[2].'<br />  category : '.$prod[3].'<br /> price : '.$prod[4].'<br /><hr>' ;
+              ?>
+            </div>
+          </a>
+        <?php	};?>
     </div>
   </body>
 </html>

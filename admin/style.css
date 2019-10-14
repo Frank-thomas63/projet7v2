@@ -86,3 +86,17 @@ input[type=text] {
 
   display: flex;
 }
+.product{
+  background-color: grey;
+  text-decoration: none;
+}
+.BlocProd{
+  color: white;
+  background-color: grey;
+  text-decoration: none;
+}
+.BlocProd:hover{
+  color: black;
+  background-color: #CCCCFF;
+  text-decoration: none;
+}
