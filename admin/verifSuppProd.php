@@ -17,11 +17,11 @@ $prod = $pdoStat->fetchAll();
     <title></title>
   </head>
   <body>
-    <div class="bloc2">
-    <?php foreach ($prod as $prod): ?>
-      <p> Are you sure you want to delete  <?= $prod['name'] ?> ? </p>
-      <a class="supp" href="suppProd.php?numprod=<?= $prod['id']?>"> Supprimer</a>
-    <?php endforeach; ?>
-  </div>
+    <div class="ensemble">
+      <?php foreach ($prod as $prod): ?>
+        <p> Are you sure you want to delete  <?= $prod['name'] ?> ? </p>
+        <a class="supp" href="suppProd.php?numprod=<?= $prod['id']?>"> Supprimer</a>
+      <?php endforeach; ?>
+    </div>
   </body>
 </html>

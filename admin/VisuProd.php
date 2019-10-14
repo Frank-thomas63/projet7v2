@@ -1,5 +1,5 @@
 <?php
-VAR_DUMP($_POST);
+
 // connection a la bdd
 require_once "connect.php";
 $pdoStat = $bdd->prepare('SELECT * FROM product WHERE id=:num');

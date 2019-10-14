@@ -28,3 +28,6 @@ $brand = $pdoStat->fetch();
     </div>
   </body>
 </html>
+
+ALTER TABLE product ADD CONSTRAINT category_id FOREIGN KEY id REFERENCES category (1,name) ON DELETE CASCADE;
+ALTER TABLE site_web ADD CONSTRAINT fk_client FOREIGN KEY idclient REFERENCES client(idclient) ON DELETE CASCADE;

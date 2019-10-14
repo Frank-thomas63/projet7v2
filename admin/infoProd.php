@@ -3,7 +3,7 @@
 require_once "connect.php";
 $pdoStat = $bdd->prepare('SELECT * FROM product');
 $executeItOk = $pdoStat-> execute();
-$prod = $pdoStat-> fetchAll();
+$product = $pdoStat-> fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +22,10 @@ $prod = $pdoStat-> fetchAll();
             <input type="submit" value=" Add Product">
         </form>
         <div class="bloc">
-          <?php foreach ($prod as $prod): ?>
-            <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
-                <p><?= $prod['name'] ?></p>
-                <p><a class="display" href="VisuProd.php?numprod=<?= $prod['id']?>"> display </a></p>
+          <?php foreach ($product as $product): ?>
+            <input type="hidden" name="numprod" value="<?=$product['id'];?>">
+                <p><?= $product['name'] ?></p>
+                <p><a class="display" href="VisuProd.php?numprod=<?= $product['id']?>"> display </a></p>
               <hr>
             </table>
           <?php endforeach; ?>
