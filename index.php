@@ -26,7 +26,6 @@ $product = $pdoStat-> fetchAll();
     <div class="ensemble">
       <?php require_once 'menu2.php' ?>
       <h1> All products </h1>
-
         <?php  foreach( $product as $prod ){?>
               <input type="hidden" name="numprod" value="<?=$prod['id'];?>">
               <a class="display" href="product.php?numprod=<?= $prod['id']?>" class="bloc">

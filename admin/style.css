@@ -40,7 +40,29 @@ input[type=submit] {
   border: none;
   border-bottom: 2px solid black;
 }
+.connection input[type=submit]{
+  background-color: Blue;
+  font-size: 17px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  width: 133px;
+  height: 50px;
+  color: white;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.blocHaut{
+  /* border: 1px solid green; */
+}
 input[type=text] {
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  width: 250px;
+  height: 25px;
+  border-bottom: 2px solid black;
+}
+input[type=password] {
   font-family: 'Raleway', sans-serif;
   font-size: 30px;
   width: 250px;
@@ -57,6 +79,7 @@ input[type=text] {
   margin:0 auto;
   width: 100%;
   text-align: center;
+  /* border: 1px solid red; */
 }
 .blocMenu{
   width: 50%;
@@ -78,7 +101,6 @@ input[type=text] {
   margin:0 auto;
   text-align: justify;
   width: 100%;
-
 }
 .bloc3{
   margin:0 auto;
@@ -99,4 +121,11 @@ input[type=text] {
   color: black;
   background-color: #CCCCFF;
   text-decoration: none;
+}
+/* index */
+.bloc4{
+  width:38%;
+  margin:0 auto;
+  text-align: justify;
+/* border: 1px solid blue; */
 }

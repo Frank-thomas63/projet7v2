@@ -58,7 +58,7 @@ $executeItOk = $pdoStatsize-> execute();
                 Stock : <?= $stock['stock'] ?><br>
                 <?php
                 $message = '';
-
+                $lien ='';
                 if($stock['stock']>= 10){
                   $lien = "<a class='modify' > Commander</a>";
                 }
@@ -68,6 +68,7 @@ $executeItOk = $pdoStatsize-> execute();
                 }
                 if($stock['stock']<= 0){
                   $message = 'Epuisé !';
+                  $lien ='';
                 }
                 ?><p><?php echo $message ?></p>
                   <p><?php echo $lien ?></p>
