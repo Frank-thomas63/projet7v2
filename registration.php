@@ -1,5 +1,13 @@
 <?php
+session_start();
+//mail
+$header="MIME-Version: 1.0\r\n";
+$header='From: "Simplon Chaustores"<franktcontact@gùail.com'."\n";
+$header='Content-type:text/html; charset="utf-8"'."\n";
+$header='Content-Transfer-Encoding: 8bit';
 
+
+//formulaire
 $message = '';
 if (!empty($_POST)){
    /* on test si les champ sont bien remplis */
@@ -12,28 +20,40 @@ if (!empty($_POST)){
             /* on test si les deux mdp sont bien identique */
             if ($_POST['password']==$_POST['repeatpassword'])
             {
-                // On crypte le mot de passe
+              // On crypte le mot de passe
                 $_POST['password'] = sha1($_POST['password']);
-                // on se connecte à MySQL et on sélectionne la base
-                require_once 'admin/connect.php';
+                //captcha
+                if(isset($_POST['captcha'])){
+                  if($_POST['captcha'] == $_SESSION['captcha']){
+                      // on se connecte à MySQL et on sélectionne la base
+                      require_once 'admin/connect.php';
 
-                //On créé la requête
-                $pdoStat = $bdd->prepare('INSERT INTO user ( lastname, firstname, email, address, city, postalcode, password)
-                                          VALUES ("'.$_POST['lastname'].'", "'.$_POST['firstname'].'", "'.$_POST['email'].'", "'.$_POST['address'].'", "'.$_POST['city'].'", "'.$_POST['postalcode'].'", "'.$_POST['password'].'")');
-                $issertIsOk = $pdoStat->execute();
-                /* execute et affiche l'erreur mysql si elle se produit */
-                if($issertIsOk){
-                  $message = 'You are well registered';
-                }else{
-                  $message = 'There was a problem during the recording';
-                }
-            }
-            else $message = 'Les mots de passe ne sont pas identiques';
-        }
-        else $message ='Le mot de passe est trop court !';
-    }
-    else $message = 'Veuillez saisir tous les champs !';
-}
+                      //On créé la requête
+                      $pdoStat = $bdd->prepare('INSERT INTO user ( lastname, firstname, email, address, city, postalcode, password)
+                                                VALUES ("'.$_POST['lastname'].'", "'.$_POST['firstname'].'", "'.$_POST['email'].'", "'.$_POST['address'].'", "'.$_POST['city'].'", "'.$_POST['postalcode'].'", "'.$_POST['password'].'")');
+                      $issertIsOk = $pdoStat->execute();
+                      /* execute et affiche l'erreur mysql si elle se produit */
+                      if($issertIsOk){
+                        header('Location:index.php');
+                        $mail='
+                        <html>
+                          <body>
+                            <div align="center">
+                              You are registered with Simplon Chaustore, we wish you a good purchase !
+                            </div>
+                          </body>
+                        </html>
+                        ';
+                        mail($_POST['email'], " Welcom to Simplon Chaustores", $mail, $header);
+                      }else{
+                        $message = 'There was a problem during the recording';
+                    }
+                }else $message = 'invalid captcha ';
+            }else $message = 'you did not return the captcha ';
+          }else $message = 'Les mots de passe ne sont pas identiques';
+        }else $message ='Le mot de passe est trop court !';
+    }else $message = 'Veuillez saisir tous les champs !';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +79,10 @@ if (!empty($_POST)){
             <label>Postal code *:<br><input type="text" name="postalcode" value="<?php if(isset($_POST['postalcode'])){echo $_POST['postalcode'];}?> "></label><br>
             <label>Password (Min 6 character)*:<br> <input type="password" name="password"></label><br>
             <label>Verification Password *:<br><input type="password" name="repeatpassword"></label><br>
-            <p> * Fields are required </p>
+            <p>copy the number *:</p>
+            <p><img src="captcha.php"/></p>
+            <p><input type="text" name="captcha"/></p>
+             <p> * Fields are required </p>
             <p><input class="Recording" type="submit" value="Recording"></p>
         </form>
       </div>
