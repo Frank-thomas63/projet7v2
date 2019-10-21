@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // connection a la bdd
 require_once "admin/connect.php";
 $pdoStat = $bdd->prepare('SELECT p.`id`, p.`name`, b.`name`, c.`name`, p.`price`
